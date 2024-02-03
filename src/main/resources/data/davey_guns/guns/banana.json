@@ -1,0 +1,32 @@
+{
+  "display": {
+    "flash": {
+      "yOffset": 3.6,
+      "zOffset": -6.41
+    }
+  },
+  "general": {
+    "auto": false,
+    "gripType": "cgm:one_handed",
+    "maxAmmo": 1,
+    "rate": 3,
+    "recoilAngle": 25.0,
+    "recoilKick": 6,
+    "reloadAmount": 0,
+    "spread": 0
+  },
+  "projectile": {
+    "damage": 6.5,
+    "item": "davey_guns:banana_ammo",
+    "life": 25,
+    "size": 50,
+    "speed": 10.0
+  },
+  "sounds": {
+    "cock": "cgm:item.assault_rifle.cock",
+    "enchantedFire": "cgm:item.assault_rifle.enchanted_fire",
+    "fire": "davey_guns:item.pew",
+    "reload": "davey_guns:item.reload",
+    "silencedFire": "cgm:item.assault_rifle.silenced_fire"
+  }
+}

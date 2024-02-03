@@ -54,6 +54,10 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'davey_guns'
 
+            // Remap mixins
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 davey_guns {
                     source sourceSets.main

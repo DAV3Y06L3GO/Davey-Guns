@@ -1,3 +1,8 @@
 {
-  "itemGroup.davey_guns.creativeTab": "Davey's Guns"
+  "itemGroup.davey_guns.creativeTab": "Davey's Guns",
+
+  "item.davey_guns.banana": "Banana",
+  "item.davey_guns.banana_peel": "Banana Peel",
+
+  "item.davey_guns.banana_ammo": "PURE POTASSIUM"
 }

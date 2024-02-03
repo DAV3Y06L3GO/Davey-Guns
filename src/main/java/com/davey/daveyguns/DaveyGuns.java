@@ -1,11 +1,17 @@
 package com.davey.daveyguns;
 
+import com.davey.daveyguns.client.ClientHandler;
+import com.davey.daveyguns.registry.ModItems;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.logging.LogUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.CreativeModeTabRegistry;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,33 +31,28 @@ public class DaveyGuns
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    // Creative tab
-public static final CreativeModeTab GROUP = new CreativeModeTab.Builder(CreativeModeTab.Row.TOP, 1)
-            .title(Component.translatable("itemGroup.davey_guns.creativeTab"))
-            .icon(() -> {  return new ItemStack(Items.POTATO);  })
-            .displayItems((smth, tab) -> {
-                tab.accept(Items.ACACIA_LOG);
-            })
-            .build();
+
 
 
     public DaveyGuns()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        modEventBus.addListener(this::commonSetup);
+
         modEventBus.register(this);
 
-
+        ModItems.register(modEventBus);
 
         // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::ClientSetup);
+        modEventBus.addListener(this::onClientSetup);
 
         // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(ClientHandler::onRegisterCreativeModeTab);
     }
 
-    private void ClientSetup(final FMLClientSetupEvent event) {
-
+    private void onClientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(ClientHandler::registerModelOverrides);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -59,10 +60,6 @@ public static final CreativeModeTab GROUP = new CreativeModeTab.Builder(Creative
 
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event)
-    {
-
-    }
 
 
 }

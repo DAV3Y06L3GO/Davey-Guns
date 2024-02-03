@@ -1,0 +1,4 @@
+{
+  "item.pew":                 { "subtitle": "PEW!",           "sounds": [{ "name": "davey_guns:item/pew" }]},
+  "item.reload":                 { "subtitle": "Reload",           "sounds": [{ "name": "davey_guns:item/reload" }]}
+}
